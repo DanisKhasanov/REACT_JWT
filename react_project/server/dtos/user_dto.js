@@ -1,11 +1,11 @@
 module.exports = class UserDto {
   email;
   id;
-  isActivated;
+  isActiveted;
 
-  constructor(module) {
+  constructor(model) {
     this.email = model.email;
     this.id = model._id;
-    this.isActivated = model.isActivated;
+    this.isActiveted = model.isActiveted;
   }
 };

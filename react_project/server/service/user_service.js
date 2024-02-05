@@ -1,7 +1,7 @@
 const UserModel = require("../models/user_models");
 const bcrypt = require("bcrypt");
 const uuid = require("uuid");
-const mailService = require("./mail_service");
+// const mailService = require("./mail_service");
 const tokenService = require("./token_service");
 const UserDto = require("../dtos/user_dto");
 const ApiError = require("../exceptions/api_error");
@@ -62,6 +62,33 @@ class UserService {
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
     return { ...tokens, users: userDto };
+  }
+
+  async logout(refreshToken) {
+    const token = await tokenService.removeToken(refreshToken);
+  }
+
+  async refreshToken(refreshToken){
+    if (!refreshToken) {
+      throw ApiError.UnauthorizedError();
+    }
+    const userData = tokenService.validateRegreshToken(refreshToken);
+    const tokenFromDb = await tokenService.findToken(refreshToken);
+    if (!tokenFromDb || !userData) {
+      throw ApiError.UnauthorizedError();
+    }
+    const user = await UserModel.findById(userData.id);
+    const userDto = new UserDto(user);
+    const tokens = tokenService.generateToken({ ...userDto });
+    await tokenService.saveToken(userDto.id, tokens.refreshToken);
+
+    return { ...tokens, users: userDto };
+
+  }
+
+  async getAllUsers() {
+    const users = await UserModel.find();
+    return users;
   }
 }
 

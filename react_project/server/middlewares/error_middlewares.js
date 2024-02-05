@@ -5,7 +5,8 @@ module.exports = function (err, req, res, next) {
   if (err instanceof ApiError) {
     return res
       .status(err.status)
-      .json({ massage: err.message, erros: err.errors });
+      .json({ massage: err.message, errors: err.errors });
   }
-  return res.status(500).json({ massage: "Непредвиденная ошибка" });
+  return res.status(500).json({ message: "Непредвиденная ошибка" });
+
 };

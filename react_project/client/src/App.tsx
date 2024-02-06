@@ -17,16 +17,14 @@ const App: FC = () => {
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>
         <h1>Проверка авторизации...</h1>
-      
       </div>
     );
   }
 
-
   // Если пользователь не авторизован, показываем форму входа
   if (!store.isAuth) {
     return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <div className="app-container">
         <h1>Добро пожаловать!</h1>
         <p>Пожалуйста, войдите или зарегистрируйтесь:</p>
         <LoginForm />
@@ -36,13 +34,14 @@ const App: FC = () => {
 
   // Если пользователь авторизован, показываем информацию и кнопку выхода
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div className="app-container">
       <h1>Пользователь авторизован</h1>
       {store.user && <p>Email: {store.user.email}</p>}
-      <button onClick={() => store.logout()}>Выйти</button>
+      <button className="logout-button" onClick={() => store.logout()}>
+        Выйти
+      </button>
     </div>
   );
-
 };
 
 export default observer(App);

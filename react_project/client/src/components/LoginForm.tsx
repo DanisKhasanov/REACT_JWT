@@ -1,6 +1,7 @@
 import React, { FC, useContext, useState } from "react";
 import { Context } from "../index";
-import "./LoginForm.css"; // Подключаем файл стилей
+import "./LoginForm.css";
+import { observer } from "mobx-react-lite";
 
 const LoginForm: FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -24,14 +25,20 @@ const LoginForm: FC = () => {
         type="password"
         placeholder="Password"
       />
-      <button className="login-button" onClick={() => store.login(email, password)}>
+      <button
+        className="login-button"
+        onClick={() => store.login(email, password)}
+      >
         Логин
       </button>
-      <button className="registration-button" onClick={() => store.registration(email, password)}>
+      <button
+        className="registration-button"
+        onClick={() => store.registration(email, password)}
+      >
         Регистрация
       </button>
     </div>
   );
 };
 
-export default LoginForm;
+export default observer(LoginForm);

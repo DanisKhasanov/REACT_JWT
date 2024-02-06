@@ -74,7 +74,7 @@ class UserConrtoller {
         httpOnly: true,
       });   
       return res.json(userData);
-    } catch (e) {
+    } catch (error) {
       next(error);
     }
   }

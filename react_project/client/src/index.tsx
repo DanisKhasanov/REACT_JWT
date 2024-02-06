@@ -1,8 +1,7 @@
 import { createContext } from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./App";
 import Store from "./store/store";
-
 
 interface State {
   store: Store;
@@ -14,12 +13,14 @@ export const Context = createContext<State>({
   store,
 });
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+ReactDOM.render(
+  <Context.Provider
+    value={{
+      store,
+    }}
+  >
+    <App />
+  </Context.Provider>,
+  document.getElementById("root")
 );
 
-root.render(
-  <Context.Provider value={{ store }}>
-    <App />
-  </Context.Provider>
-);

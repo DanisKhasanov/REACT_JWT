@@ -1,0 +1,40 @@
+/* Добавленные стили для ErrorModal */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Затемненный фон */
+}
+
+.modal-content {
+  background-color: #e66969;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+  width: 300px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+}
+
+.error-message {
+  color: #ff3333; /* Цвет текста ошибки */
+  font-size: 16px;
+  margin-bottom: 0;
+}

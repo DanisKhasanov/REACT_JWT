@@ -49,9 +49,7 @@ class UserService {
   async login(email, password) {
     const user = await UserModel.findOne({ email });
     if (!user) {
-      throw ApiError.BadRequest(
-        `Пользователь с таким паролем ${email} не найден`
-      );
+      throw ApiError.BadRequest(`Пользователь с такой почтой не найден`);
     }
     const isPassEquals = await bcrypt.compare(password, user.password);
     if (!isPassEquals) {
@@ -68,7 +66,7 @@ class UserService {
     const token = await tokenService.removeToken(refreshToken);
   }
 
-  async refreshToken(refreshToken){
+  async refreshToken(refreshToken) {
     if (!refreshToken) {
       throw ApiError.UnauthorizedError();
     }
@@ -83,7 +81,6 @@ class UserService {
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
     return { ...tokens, users: userDto };
-
   }
 
   async getAllUsers() {

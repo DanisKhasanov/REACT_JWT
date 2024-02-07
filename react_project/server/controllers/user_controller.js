@@ -13,7 +13,7 @@ class UserConrtoller {
     try {
       const error = validationResult(req);
       if (!error.isEmpty()) {
-        return next(ApiError.BadRequest("Ошибка при валидации", error.array()));
+        return next(ApiError.BadRequest("Ошибка при валидации! Введите корректную почту или пароль", error.array()));
       }
       const { email, password } = req.body;
       const userData = await userService.registration(email, password);

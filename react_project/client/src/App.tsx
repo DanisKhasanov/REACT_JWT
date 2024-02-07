@@ -2,9 +2,14 @@ import React, { FC, useContext, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
 import { Context } from "./index";
 import { observer } from "mobx-react-lite";
+import ErrorModal from "./components/ErrorMassage";
 
 const App: FC = () => {
   const { store } = useContext(Context);
+
+  const closeModal = () => {
+    store.setError(null); // Закрываем модальное окно и очищаем ошибку
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -21,25 +26,21 @@ const App: FC = () => {
     );
   }
 
-  // Если пользователь не авторизован, показываем форму входа
-  if (!store.isAuth) {
-    return (
-      <div className="app-container">
-        <h1>Добро пожаловать!</h1>
-        <p>Пожалуйста, войдите или зарегистрируйтесь:</p>
-        <LoginForm />
-      </div>
-    );
-  }
-
-  // Если пользователь авторизован, показываем информацию и кнопку выхода
   return (
     <div className="app-container">
-      <h1>Пользователь авторизован</h1>
-      {store.user && <p>Email: {store.user.email}</p>}
-      <button className="logout-button" onClick={() => store.logout()}>
-        Выйти
-      </button>
+      {store.error && <ErrorModal message={store.error} onClose={closeModal} />}
+
+      {!store.isAuth ? (
+        <LoginForm />
+      ) : (
+        <div className="app-container-check">
+          <h1>Пользователь авторизован</h1>
+          {store.user && <p>Email: {store.user.email}</p>}
+          <button className="logout-button" onClick={() => store.logout()}>
+            Exit
+          </button>
+        </div>
+      )}
     </div>
   );
 };

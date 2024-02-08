@@ -3,18 +3,17 @@ import React, { FC, useContext, useState } from "react";
 import { Context } from "../index";
 import "./LoginForm.css";
 import { observer } from "mobx-react-lite";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa"; // Импортируем иконки
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const LoginForm: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [isTypingPassword, setIsTypingPassword] = useState<boolean>(false); // Состояние для отслеживания ввода пароля
+  const [isTypingPassword, setIsTypingPassword] = useState<boolean>(false);
   const { store } = useContext(Context);
 
   const getPasswordStrength = (password: string): number => {
-    // Просто для примера, можно заменить на более сложный алгоритм
-    return Math.min(password.length, 6) / 6 * 100; // Приводим к процентам от 0 до 100
+    return (Math.min(password.length, 6) / 6) * 100;
   };
 
   const passwordStrength = getPasswordStrength(password);
@@ -42,18 +41,18 @@ const LoginForm: FC = () => {
           className="login-input"
           onChange={(e) => {
             setPassword(e.target.value);
-            setIsTypingPassword(true); // Устанавливаем флаг в true при вводе пароля
+            setIsTypingPassword(true);
           }}
           value={password}
           type={showPassword ? "text" : "password"}
           placeholder="Password"
         />
-        {/* Показываем ползунок силы пароля только при вводе пароля */}
+        {}
         {isTypingPassword && (
           <div className="password-strength-meter">
             <div
               className={`password-strength-indicator ${passwordClass}`}
-              style={{ width: `${passwordStrength}%` }} // Изменяем ширину в зависимости от силы пароля
+              style={{ width: `${passwordStrength}%` }}
             />
           </div>
         )}
@@ -73,7 +72,7 @@ const LoginForm: FC = () => {
         className="registration-button"
         onClick={() => store.registration(email, password)}
       >
-        Registration 
+        Registration
       </button>
     </div>
   );

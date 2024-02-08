@@ -9,8 +9,8 @@ const errorMiddleware = require("./middlewares/error_middlewares");
 const PORT = 5000;
 const app = express();
 
-app.use(express.json()); // разбирать тело запроса в формате JSON
-app.use(cookieParser()); // работать с куки , которые могут использоваться для хранения информации на стороне клиента.
+app.use(express.json()); 
+app.use(cookieParser()); 
 app.use(
   cors({
     credentials: true,

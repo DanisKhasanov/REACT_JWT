@@ -5,8 +5,7 @@
 const userService = require("../service/user_service");
 const { validationResult } = require("express-validator");
 const ApiError = require("../exceptions/api_error");
-// const userModel = require("../models/user-model");
-// const tokenService = require("../service/token-service");
+
 
 class UserConrtoller {
   async registration(req, res, next) {

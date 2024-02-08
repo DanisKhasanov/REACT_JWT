@@ -8,13 +8,13 @@ const App: FC = () => {
   const { store } = useContext(Context);
 
   const closeModal = () => {
-    store.setError(null); // Закрываем модальное окно и очищаем ошибку
+    store.setError(null); 
   };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      store.checkAuth(); // Проверяем авторизацию при загрузке компонента
+      store.checkAuth(); 
     }
   }, []);
 

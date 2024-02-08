@@ -39,6 +39,37 @@
 
 <details>
   <summary> Пример 1: Главное меню</summary>
-  <img src="react_project/img/1.png" alt="Главное меню">
+  <img src="react_project/img/7.png" alt="Главное меню">
 </details>
    
+
+<details>
+  <summary> Пример 2: Ввод почты и пароля </summary>
+  <img src="react_project/img/6.png" alt="Главное меню">
+</details>
+
+
+<details>
+  <summary> Пример 3: Ошибки</summary>
+  <img src="react_project/img/5.png" alt="Главное меню">
+    <img src="react_project/img/4.png" alt="Главное меню">
+</details>
+   
+
+<details>
+  <summary> Пример 4: Просмотр пароля </summary>
+  <img src="react_project/img/4.png" alt="Главное меню">
+</details>
+
+   
+<details>
+  <summary> Пример 5: Авторизация пользователя </summary>
+  <img src="react_project/img/6.png" alt="Главное меню">
+</details>
+
+
+<details>
+  <summary> Пример 6: В MongoDB создается user </summary>
+  <img src="react_project/img/6.png" alt="Главное меню">
+</details>
+

@@ -58,18 +58,18 @@
 
 <details>
   <summary> Пример 4: Просмотр пароля </summary>
-  <img src="react_project/img/4.png" alt="Главное меню">
+  <img src="react_project/img/3.png" alt="Главное меню">
 </details>
 
    
 <details>
   <summary> Пример 5: Авторизация пользователя </summary>
-  <img src="react_project/img/6.png" alt="Главное меню">
+  <img src="react_project/img/2.png" alt="Главное меню">
 </details>
 
 
 <details>
   <summary> Пример 6: В MongoDB создается user </summary>
-  <img src="react_project/img/6.png" alt="Главное меню">
+  <img src="react_project/img/1.png" alt="Главное меню">
 </details>
 
